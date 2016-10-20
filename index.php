@@ -1,3 +1,11 @@
+<?php
+session_start();
+include "config.php";
+$get = $_SESSION;
+if (empty($get['uName'])) {
+    header('Location: index.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,6 +19,7 @@
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+		<link rel="shortcut icon" type="image/ico" href="favicon.ico">
 
 		<!-- page specific plugin styles -->
 
@@ -329,7 +338,7 @@
 								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<?php echo $get['uName']; ?>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -353,7 +362,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="logout.php">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
@@ -374,148 +383,154 @@
 				<script type="text/javascript">
 					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
 				</script>
-				
+				<?php
+                $act1 = "";
+                $act2 = "";
+                $act3 = "";
+                $act4 = "";
+                $act5 = "";
+                $act6 = "";
+                $act7 = "";
+                $act8 = "";
+                $act9 = "";
+                $act0 = "";
+                $act11 = "";
+                $act = $_GET['psi'];
+                if (isset($act)) {
+                    if ($act == 'dashboard') {
+                        $act1 = "active";
+                    } else if ($act == 'testee') {
+                        $act2 = "active";
+                    } else if ($act == 'subtest') {
+                        $act3 = "active";
+                    } else if ($act == 'skala') {
+                        $act4 = "active";
+                    }else if ($act == 'aspek') {
+                        $act5 = "active";
+                    }else if ($act == 'standart') {
+                        $act6 = "active";
+                    }else if ($act == 'perhitungan') {
+                        $act7 = "active";
+                    }else if ($act == 'psikogram') {
+                        $act8 = "active";
+                    }else if ($act == 'subtestee') {
+                        $act9 = "active";
+                    }else if ($act == 'lahasil') {
+                        $act0 = "active";
+                    }else if ($act == 'lapsiko') {
+                        $act11 = "active";
+                    }
+                }
+                ?>
 				<ul class="nav nav-list">
-					<li class="active">
-						<a href="dashboard">
+					<li class="<?php echo $act1; ?>">
+						<a href="index.php?psi=dashboard">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
-
 						<b class="arrow"></b>
 					</li>
-
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
 								Master
 							</span>
-
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
-
 						<ul class="submenu">
-							<li class="">
-								<a href="testee" class="dropdown-toggle">
+							<li class="<?php echo $act2; ?>">
+								<a href="index.php?psi=testee">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Testee
-								</a>
-								
+								</a>				
 							</li>
-
-							<li class="">
-								<a href="subtest">
+							<li class="<?php echo $act3; ?>">
+								<a href="index.php?psi=subtest">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Subtest
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
-							<li class="">
-								<a href="skala">
+							<li class="<?php echo $act4; ?>">
+								<a href="index.php?psi=skala">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Skala
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
-							<li class="">
-								<a href="aspek">
+							<li class="<?php echo $act5; ?>">
+								<a href="index.php?psi=aspek">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Aspek
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
-							<li class="">
-								<a href="standart">
+							<li class="<?php echo $act6; ?>">
+								<a href="index.php?psi=standart">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Standart Aspek
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
 						</ul>
 					</li>
-
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text"> Proses </span>
-
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
-
 						<ul class="submenu">
-							<li class="">
-								<a href="perhitungan">
+							<li class="<?php echo $act7; ?>">
+								<a href="index.php?psi=perhitungan">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Perhitungan
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
-							<li class="">
-								<a href="psikogram">
+							<li class="<?php echo $act8; ?>">
+								<a href="index.php?psi=psikogram">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Draft Psikogram
 								</a>
-
 								<b class="arrow"></b>
-							</li>
-							
-							<li class="">
-								<a href="subtestee">
+							</li>							
+							<li class="<?php echo $act9; ?>">
+								<a href="index.php?psi=subtestee">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Subtest Testee
 								</a>
-
 								<b class="arrow"></b>
 							</li>
 						</ul>
 					</li>
-
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Laporan </span>
-
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
-
 						<ul class="submenu">
-							<li class="">
-								<a href="lahasil">
+							<li class="<?php echo $act0; ?>">
+								<a href="index.php?psi=lahasil">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Hasil Perhitungan
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
-							<li class="">
-								<a href="lapsiko">
+							<li class="<?php echo $act11; ?>">
+								<a href="index.php?psi=lapsiko">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Psikogram
 								</a>
-
 								<b class="arrow"></b>
 							</li>						
 						</ul>
 					</li>
-
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -529,22 +544,6 @@
 
 			<div class="main-content">
 				<div class="main-content-inner">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
-
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-							<li class="active">Dashboard</li>
-						</ul><!-- /.breadcrumb -->
-
-						
-					</div>
-
 					<div class="page-content">
 					<?php
 					$p = $_GET['psi'];
@@ -556,19 +555,21 @@
 						}elseif($p == "subtest"){
 							include "subtest.php";
 						}elseif($p == "skala"){
-							include "skala.php"
+							include "skala.php";
 						}elseif($p == "aspek"){
-							include "aspek.php"
+							include "aspek.php";
 						}elseif($p == "standart"){
-							include "standart.php"
+							include "standart.php";
 						}elseif($p == "perhitungan"){
-							include "perhitungan.php"
+							include "perhitungan.php";
+						}elseif($p == "psikogram"){
+							include "psikogram.php";
 						}elseif($p == "subtestee"){
-							include "subtestee.php"
+							include "subtestee.php";
 						}elseif($p == "lahasil"){
-							include "lahasil.php"
+							include "lahasil.php";
 						}elseif($p == "lapsiko"){
-							include "lapsiko.php"
+							include "lapsiko.php";
 						}
 					}else{
 						echo "<script>javascript:window.location.replace('index.php?psi=dashboard');</script>";
