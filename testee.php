@@ -63,7 +63,7 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
 <?php
-$sql = "select * from user";
+$sql = "select * from testee";
 $result = mysql_query($sql);
 
 //create an array
@@ -133,16 +133,16 @@ while ($row = mysql_fetch_assoc($result)) {
             subGridRowExpanded: function (subgridDivId, rowId) {
             var subgridTableId = subgridDivId + "_t";
             $("#" + subgridDivId).html("<table id='" + subgridTableId + "'></table>");
-            $("#" + subgridTableId).jqGrid({
-            datatype: 'local',
-                    data: subgrid_data,
-                    colNames: ['No', 'Item Name', 'Qty'],
-                    colModel: [
-                    {name: 'id', width: 50},
-                    {name: 'name', width: 150},
-                    {name: 'qty', width: 50}
-                    ]
-            });
+//            $("#" + subgridTableId).jqGrid({
+//            datatype: 'local',
+//                    data: subgrid_data,
+//                    colNames: ['No', 'Item Name', 'Qty'],
+//                    colModel: [
+//                    {name: 'id', width: 50},
+//                    {name: 'name', width: 150},
+//                    {name: 'qty', width: 50}
+//                    ]
+//            });
             },
             data: grid_data,
             datatype: "local",
@@ -159,16 +159,16 @@ while ($row = mysql_fetch_assoc($result)) {
                     //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                     }
             },
-            {name: 'id', index: 'id', width: 60, sorttype: "int", editable: true},
-            {name: 'username', index: 'username', width: 90, editable: true},
-            {name: 'password', index: 'password', width: 150, editable: true},
-            {name: 'nama', index: 'nama', width: 70, editable: true},
-            {name: 'ship', index: 'ship', width: 90, editable: true, edittype: "select", editoptions: {value: "FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}},
-            {name: 'note', index: 'note', width: 150, sortable: false, editable: true, edittype: "textarea", editoptions: {rows: "2", cols: "10"}}
+            {name: 'nama', index: 'nama', width: 90, editable: true},
+            {name: 'tanggal_lahir', index: 'tanggal', width: 150, editable: true, unformat: pickDate},
+            {name: 'alamat', index: 'alamat', width: 70, editable: true, edittype: "textarea", editoptions: {rows: "2", cols: "10"}},
+            {name: 'pendidikan', index: 'pendidikan', width: 90, editable: true, edittype: "select", editoptions: {value: "SMA/SMK:SMA/SMK;Diplima:Diploma;Sarjana:Sarjana;Magister:Magister"}},
+            {name: 'pekerjaan', index: 'pekerjaan', width: 150, sortable: false, editable: true, edittype: "textarea", editoptions: {rows: "2", cols: "10"}},
+            {name: 'telepon', index: 'telepon', width: 150, sortable: false, editable: true}
             ],
             viewrecords: true,
             rowNum: 10,
-            rowList: [10, 20, 30, 'All'],
+            rowList: [10, 20, 30],
             pager: pager_selector,
             altRows: true,
             //toppager: true,
