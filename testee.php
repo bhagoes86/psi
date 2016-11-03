@@ -11,29 +11,35 @@
         <p><a class="btn btn-success" data-target="#ModalAdd" data-toggle="modal">Add Data</a></p>      
         <table id="mytable" class="table table-bordered">
             <thead>
-            <th>No</th>
-            <th>Name</th>
-            <th>Description</th>
+            <th>No.</th>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Alamat</th>
+            <th>Pendidikan</th>
+            <th>Pekerjaan</th>
+            <th>Telp.</th>
             <th>Action</th>
             </thead>
             <?php
             //menampilkan data mysqli
             $no = 0;
-            $modal = mysql_query("SELECT * FROM user");
-            while ($r = mysql_fetch_array($modal)) {
+            $qTestee = mysql_query("SELECT * FROM testee");
+            while ($dataTestee = mysql_fetch_array($qTestee)) {
                 $no++;
                 ?>
                 <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $r['username']; ?></td>
-                    <td><?php echo $r['id']; ?></td>
+                    <td><?php echo $dataTestee['nama']; ?></td>
+                    <td><?php echo $dataTestee['tanggal_lahir']; ?></td>
+                    <td><?php echo $dataTestee['alamat']; ?></td>
+                    <td><?php echo $dataTestee['pendidikan']; ?></td>
+                    <td><?php echo $dataTestee['pekerjaan']; ?></td>
+                    <td><?php echo $dataTestee['telp']; ?></td>
                     <td>
-                        <a href="#" class='open_modal' id='<?php echo $r['id']; ?>'>Edit</a>
-                        <a href="#" onclick="confirm_modal('proses_delete.php?&modal_id=<?php echo $r['id']; ?>');">Delete</a>
+                        <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataTestee['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
+                        <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('proses_delete.php?&modal_id=<?php echo $dataTestee['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
                     </td>
                 </tr>
-
-
             <?php } ?>
         </table>
 
@@ -44,26 +50,46 @@
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Add Data Using Modal Boostrap (popup)</h4>
+                        <h4 class="modal-title" id="myModalLabel">Testee</h4>
                     </div>
 
                     <div class="modal-body">
                         <form action="proses_save.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Modal Name</label>
-                                <input type="text" name="modal_name"  class="form-control" placeholder="Modal Name" required/>
+                                <label for="Modal Name">Nama</label>
+                                <input type="text" name="nama"  class="form-control" placeholder="Nama" required/>
                             </div>
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Description">Description</label>
-                                <textarea name="description"  class="form-control" placeholder="Description" required/></textarea>
+                                <label for="Modal Name">Tanggal Lahir</label>
+                                <input type="date" name="tanggal_lahir"  class="form-control" placeholder="Tanggal Lahir" required/>
                             </div>
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Date">Date</label>
-                                <input type="text" name="date"  class="form-control" plcaceholder="Timestamp" disabled value="Timestamp" required/>
+                                <label for="Modal Name">Pendidikan</label>
+                                <input type="text" name="pendidikan"  class="form-control" placeholder="Pendidikan" required/>
                             </div>
+
+                            <div class="form-group" style="padding-bottom: 20px;">
+                                <label for="Modal Name">Pekerjaan</label>
+                                <input type="text" name="pekerjaan"  class="form-control" placeholder="Pekerjaan" required/>
+                            </div>
+
+                            <div class="form-group" style="padding-bottom: 20px;">
+                                <label for="Modal Name">Telp.</label>
+                                <input type="text" name="telp"  class="form-control" placeholder="Telepon" required/>
+                            </div>
+
+                            <div class="form-group" style="padding-bottom: 20px;">
+                                <label for="Description">Alamat</label>
+                                <textarea name="alamat" class="form-control" placeholder="Alamat" required/></textarea>
+                            </div>
+
+                            <!--                            <div class="form-group" style="padding-bottom: 20px;">
+                                                            <label for="Date">Date</label>
+                                                            <input type="text" name="date"  class="form-control" plcaceholder="Timestamp" disabled value="Timestamp" required/>
+                                                        </div>-->
 
                             <div class="modal-footer">
                                 <button class="btn btn-success" type="submit">
@@ -107,23 +133,23 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 
-<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.1.11.1.min.js"></script>
 <!-- Javascript untuk popup modal Edit--> 
 <script type="text/javascript">
-                            $(document).ready(function () {
-                                $(".open_modal").click(function (e) {
-                                    var m = $(this).attr("id");
-                                    $.ajax({
-                                        url: "modal_edit.php",
-                                        type: "GET",
-                                        data: {modal_id: m, },
-                                        success: function (ajaxData) {
-                                            $("#ModalEdit").html(ajaxData);
-                                            $("#ModalEdit").modal('show', {backdrop: 'true'});
-                                        }
-                                    });
+                        $(document).ready(function () {
+                            $(".open_modal").click(function (e) {
+                                var m = $(this).attr("id");
+                                $.ajax({
+                                    url: "modal_edit.php",
+                                    type: "GET",
+                                    data: {modal_id: m, },
+                                    success: function (ajaxData) {
+                                        $("#ModalEdit").html(ajaxData);
+                                        $("#ModalEdit").modal('show', {backdrop: 'true'});
+                                    }
                                 });
                             });
+                        });
 </script>
 
 <!-- Javascript untuk popup modal Delete--> 

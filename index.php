@@ -617,9 +617,9 @@ if (empty($get['uName'])) {
 
         <!-- <![endif]-->
 
-        <!--[if IE]>
+        <!--[if IE]>-->
 <script src="assets/js/jquery.1.11.1.min.js"></script>
-<![endif]-->
+<!--<![endif]-->
 
         <!--[if !IE]> -->
         <script type="text/javascript">
@@ -645,9 +645,9 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
         <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
         <script src="assets/js/jquery.easypiechart.min.js"></script>
         <script src="assets/js/jquery.sparkline.min.js"></script>
-        <script src="assets/js/jquery.flot.min.js"></script>
+<!--        <script src="assets/js/jquery.flot.min.js"></script>
         <script src="assets/js/jquery.flot.pie.min.js"></script>
-        <script src="assets/js/jquery.flot.resize.min.js"></script>
+        <script src="assets/js/jquery.flot.resize.min.js"></script>-->
 
         <!-- ace scripts -->
         <script src="assets/js/ace-elements.min.js"></script>
@@ -687,7 +687,7 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
 
                 //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
                 //but sometimes it brings up errors with normal resize event handlers
-                $.resize.throttleWindow = false;
+//                $.resize.throttleWindow = false;
 
                 var placeholder = $('#piechart-placeholder').css({'width': '90%', 'min-height': '150px'});
                 var data = [
@@ -697,63 +697,63 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
                     {label: "direct traffic", data: 18.6, color: "#DA5430"},
                     {label: "other", data: 10, color: "#FEE074"}
                 ];
-                function drawPieChart(placeholder, data, position) {
-                    $.plot(placeholder, data, {
-                        series: {
-                            pie: {
-                                show: true,
-                                tilt: 0.8,
-                                highlight: {
-                                    opacity: 0.25
-                                },
-                                stroke: {
-                                    color: '#fff',
-                                    width: 2
-                                },
-                                startAngle: 2
-                            }
-                        },
-                        legend: {
-                            show: true,
-                            position: position || "ne",
-                            labelBoxBorderColor: null,
-                            margin: [-30, 15]
-                        }
-                        ,
-                        grid: {
-                            hoverable: true,
-                            clickable: true
-                        }
-                    });
-                }
-                drawPieChart(placeholder, data);
+//                function drawPieChart(placeholder, data, position) {
+//                    $.plot(placeholder, data, {
+//                        series: {
+//                            pie: {
+//                                show: true,
+//                                tilt: 0.8,
+//                                highlight: {
+//                                    opacity: 0.25
+//                                },
+//                                stroke: {
+//                                    color: '#fff',
+//                                    width: 2
+//                                },
+//                                startAngle: 2
+//                            }
+//                        },
+//                        legend: {
+//                            show: true,
+//                            position: position || "ne",
+//                            labelBoxBorderColor: null,
+//                            margin: [-30, 15]
+//                        }
+//                        ,
+//                        grid: {
+//                            hoverable: true,
+//                            clickable: true
+//                        }
+//                    });
+//                }
+//                drawPieChart(placeholder, data);
 
                 /**
                  we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
                  so that's not needed actually.
                  */
-                placeholder.data('chart', data);
-                placeholder.data('draw', drawPieChart);
+//                placeholder.data('chart', data);
+//                placeholder.data('draw', drawPieChart);
 
 
                 //pie chart tooltip example
                 var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
                 var previousPoint = null;
 
-                placeholder.on('plothover', function (event, pos, item) {
-                    if (item) {
-                        if (previousPoint !== item.seriesIndex) {
-                            previousPoint = item.seriesIndex;
-                            var tip = item.series['label'] + " : " + item.series['percent'] + '%';
-                            $tooltip.show().children(0).text(tip);
-                        }
-                        $tooltip.css({top: pos.pageY + 10, left: pos.pageX + 10});
-                    } else {
-                        $tooltip.hide();
-                        previousPoint = null;
-                    }
-
-                });
+//                placeholder.on('plothover', function (event, pos, item) {
+//                    if (item) {
+//                        if (previousPoint !== item.seriesIndex) {
+//                            previousPoint = item.seriesIndex;
+//                            var tip = item.series['label'] + " : " + item.series['percent'] + '%';
+//                            $tooltip.show().children(0).text(tip);
+//                        }
+//                        $tooltip.css({top: pos.pageY + 10, left: pos.pageX + 10});
+//                    } else {
+//                        $tooltip.hide();
+//                        previousPoint = null;
+//                    }
+//
+//                });
 
                 /////////////////////////////////////
                 $(document).one('ajaxloadstart.page', function (e) {
@@ -775,33 +775,33 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
                     d3.push([i, Math.tan(i)]);
                 }
 
-                var sales_charts = $('#sales-charts').css({'width': '100%', 'height': '220px'});
-                $.plot("#sales-charts", [
-                    {label: "Domains", data: d1},
-                    {label: "Hosting", data: d2},
-                    {label: "Services", data: d3}
-                ], {
-                    hoverable: true,
-                    shadowSize: 0,
-                    series: {
-                        lines: {show: true},
-                        points: {show: true}
-                    },
-                    xaxis: {
-                        tickLength: 0
-                    },
-                    yaxis: {
-                        ticks: 10,
-                        min: -2,
-                        max: 2,
-                        tickDecimals: 3
-                    },
-                    grid: {
-                        backgroundColor: {colors: ["#fff", "#fff"]},
-                        borderWidth: 1,
-                        borderColor: '#555'
-                    }
-                });
+//                var sales_charts = $('#sales-charts').css({'width': '100%', 'height': '220px'});
+//                $.plot("#sales-charts", [
+//                    {label: "Domains", data: d1},
+//                    {label: "Hosting", data: d2},
+//                    {label: "Services", data: d3}
+//                ], {
+//                    hoverable: true,
+//                    shadowSize: 0,
+//                    series: {
+//                        lines: {show: true},
+//                        points: {show: true}
+//                    },
+//                    xaxis: {
+//                        tickLength: 0
+//                    },
+//                    yaxis: {
+//                        ticks: 10,
+//                        min: -2,
+//                        max: 2,
+//                        tickDecimals: 3
+//                    },
+//                    grid: {
+//                        backgroundColor: {colors: ["#fff", "#fff"]},
+//                        borderWidth: 1,
+//                        borderColor: '#555'
+//                    }
+//                });
 
                 $('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
                 function tooltip_placement(context, source) {
