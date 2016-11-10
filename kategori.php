@@ -1,6 +1,6 @@
 <div class="page-header">
     <h1>
-        Testee
+        Kategori
     </h1>
 </div><!-- /.page-header -->
 
@@ -12,32 +12,22 @@
         <table id="mytable" class="table table-bordered">
             <thead>
             <th>No.</th>
-            <th>Nama</th>
-            <th>Tanggal Lahir</th>
-            <th>Alamat</th>
-            <th>Pendidikan</th>
-            <th>Pekerjaan</th>
-            <th>Telp.</th>
+            <th>Kategori</th>
             <th>Action</th>
             </thead>
             <?php
             //menampilkan data mysqli
             $no = 0;
-            $qTestee = mysql_query("SELECT * FROM testee");
-            while ($dataTestee = mysql_fetch_array($qTestee)) {
+            $qSkala = mysql_query("SELECT * FROM kategori");
+            while ($dataSkala = mysql_fetch_array($qSkala)) {
                 $no++;
                 ?>
                 <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $dataTestee['nama']; ?></td>
-                    <td><?php echo $dataTestee['tanggal_lahir']; ?></td>
-                    <td><?php echo $dataTestee['alamat']; ?></td>
-                    <td><?php echo $dataTestee['pendidikan']; ?></td>
-                    <td><?php echo $dataTestee['pekerjaan']; ?></td>
-                    <td><?php echo $dataTestee['telp']; ?></td>
+                    <td><?php echo $dataSkala['nama']; ?></td>
                     <td>
-                        <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataTestee['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
-                        <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('act/testeeDel.php?&modal_id=<?php echo $dataTestee['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
+                        <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataSkala['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
+                        <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('kategoriDel.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
                     </td>
                 </tr>
             <?php } ?>
@@ -54,42 +44,12 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="act/testeeAdd.php" name="modal_popup" enctype="multipart/form-data" method="POST">
+                        <form action="act/kategoriAdd.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Nama</label>
-                                <input type="text" name="nama"  class="form-control" placeholder="Nama" required/>
+                                <label for="Modal Name">kategori</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama" required/>
                             </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir"  class="form-control" placeholder="Tanggal Lahir" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Pendidikan</label>
-                                <input type="text" name="pendidikan"  class="form-control" placeholder="Pendidikan" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Pekerjaan</label>
-                                <input type="text" name="pekerjaan"  class="form-control" placeholder="Pekerjaan" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Telp.</label>
-                                <input type="text" name="telp"  class="form-control" placeholder="Telepon" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Description">Alamat</label>
-                                <textarea name="alamat" class="form-control" placeholder="Alamat" required/></textarea>
-                            </div>
-
-                            <!--                            <div class="form-group" style="padding-bottom: 20px;">
-                                                            <label for="Date">Date</label>
-                                                            <input type="text" name="date"  class="form-control" plcaceholder="Timestamp" disabled value="Timestamp" required/>
-                                                        </div>-->
 
                             <div class="modal-footer">
                                 <button class="btn btn-success" type="submit">
@@ -138,9 +98,9 @@
 <script type="text/javascript">
                         $(document).ready(function () {
                             $(".open_modal").click(function (e) {
-                                var m = $(this).attr("id");                                
+                                var m = $(this).attr("id");
                                 $.ajax({
-                                    url: "modTesteeEdit.php",
+                                    url: "modKategoriEdit.php",
                                     type: "GET",
                                     data: {modal_id: m },
                                     success: function (ajaxData) {

@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";
+include "../config.php";
 $id = $_POST['modal_id'];
 $nama = $_POST['nama'];
 $tanggal_lahir = $_POST['tanggal_lahir'];
@@ -18,7 +18,5 @@ $modal = "UPDATE "
         . "telp='$telp', "
         . "alamat='$alamat' "
         . "WHERE id = '$id'";
-//echo $modal;
-//die();
 mysql_query($modal);
-header('location:index.php?psi=testee');
+header('location:../index.php?psi=testee');

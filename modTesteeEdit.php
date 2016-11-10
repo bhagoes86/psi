@@ -13,7 +13,7 @@ while ($r = mysql_fetch_array($modal)) {
             </div>
 
             <div class="modal-body">
-                <form action="proses_edit.php" name="modal_popup" enctype="multipart/form-data" method="POST">
+                <form action="act/testeeEdit.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                     <div class="form-group" style="padding-bottom: 20px;">
                         <label for="Modal Name">Nama</label>
@@ -55,7 +55,6 @@ while ($r = mysql_fetch_array($modal)) {
                             Cancel
                         </button>
                     </div>
-
                 </form>
 
             <?php } ?>

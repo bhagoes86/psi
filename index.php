@@ -406,6 +406,7 @@ if (empty($get['uName'])) {
                 $act9 = "";
                 $act0 = "";
                 $act11 = "";
+                $act12 = "";
                 $act = $_GET['psi'];
                 if (isset($act)) {
                     if ($act == 'dashboard') {
@@ -430,6 +431,8 @@ if (empty($get['uName'])) {
                         $act0 = "active";
                     } else if ($act == 'lapsiko') {
                         $act11 = "active";
+                    }else if ($act == 'kategori') {
+                        $act12 = "active";
                     }
                 }
                 ?>
@@ -456,18 +459,25 @@ if (empty($get['uName'])) {
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Testee
                                 </a>				
+                            </li>                            
+                            <li class="<?php echo $act4; ?>">
+                                <a href="index.php?psi=skala">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Skala
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="<?php echo $act12; ?>">
+                                <a href="index.php?psi=kategori">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Kategori
+                                </a>
+                                <b class="arrow"></b>
                             </li>
                             <li class="<?php echo $act3; ?>">
                                 <a href="index.php?psi=subtest">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Subtest
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="<?php echo $act4; ?>">
-                                <a href="index.php?psi=skala">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Skala
                                 </a>
                                 <b class="arrow"></b>
                             </li>
@@ -584,8 +594,8 @@ if (empty($get['uName'])) {
                                 include "lahasil.php";
                             } elseif ($p == "lapsiko") {
                                 include "lapsiko.php";
-                            }elseif ($p == "jqgrid") {
-                                include "jqgrid.php";
+                            }elseif ($p == "kategori") {
+                                include "kategori.php";
                             }
                         } else {
                             echo "<script>javascript:window.location.replace('index.php?psi=dashboard');</script>";

@@ -12,7 +12,7 @@
         <table id="mytable" class="table table-bordered">
             <thead>
             <th>No.</th>
-            <th>Range</th>
+            <th>Skala</th>
             <th>Action</th>
             </thead>
             <?php
@@ -24,10 +24,10 @@
                 ?>
                 <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $dataSkala['skala']; ?></td>
+                    <td><?php echo $dataSkala['nama']; ?></td>
                     <td>
                         <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataSkala['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
-                        <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('proses_delete.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
+                        <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('act/skalaDel.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
                     </td>
                 </tr>
             <?php } ?>
@@ -44,42 +44,12 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="proses_save.php" name="modal_popup" enctype="multipart/form-data" method="POST">
+                        <form action="act/skalaAdd.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Nama</label>
-                                <input type="text" name="nama"  class="form-control" placeholder="Nama" required/>
+                                <label for="Modal Name">Skala</label>
+                                <input type="text" name="skala" class="form-control" placeholder="Skala" required/>
                             </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir"  class="form-control" placeholder="Tanggal Lahir" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Pendidikan</label>
-                                <input type="text" name="pendidikan"  class="form-control" placeholder="Pendidikan" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Pekerjaan</label>
-                                <input type="text" name="pekerjaan"  class="form-control" placeholder="Pekerjaan" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Telp.</label>
-                                <input type="text" name="telp"  class="form-control" placeholder="Telepon" required/>
-                            </div>
-
-                            <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Description">Alamat</label>
-                                <textarea name="alamat" class="form-control" placeholder="Alamat" required/></textarea>
-                            </div>
-
-                            <!--                            <div class="form-group" style="padding-bottom: 20px;">
-                                                            <label for="Date">Date</label>
-                                                            <input type="text" name="date"  class="form-control" plcaceholder="Timestamp" disabled value="Timestamp" required/>
-                                                        </div>-->
 
                             <div class="modal-footer">
                                 <button class="btn btn-success" type="submit">
@@ -130,9 +100,9 @@
                             $(".open_modal").click(function (e) {
                                 var m = $(this).attr("id");
                                 $.ajax({
-                                    url: "modal_edit.php",
+                                    url: "modSkalaEdit.php",
                                     type: "GET",
-                                    data: {modal_id: m, },
+                                    data: {modal_id: m },
                                     success: function (ajaxData) {
                                         $("#ModalEdit").html(ajaxData);
                                         $("#ModalEdit").modal('show', {backdrop: 'true'});
