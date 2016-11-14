@@ -9,7 +9,8 @@
         <!-- PAGE CONTENT BEGINS -->
 
         <p><a class="btn btn-success" data-target="#ModalAdd" data-toggle="modal">Add Data</a></p>      
-        <table id="mytable" class="table table-bordered">
+        <!--<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">-->
+        <table id="example" class=" table table-striped table-bordered">
             <thead>
             <th>No.</th>
             <th>Nama</th>
@@ -136,27 +137,26 @@
 <script src="assets/js/jquery.1.11.1.min.js"></script>
 <!-- Javascript untuk popup modal Edit--> 
 <script type="text/javascript">
-                        $(document).ready(function () {
-                            $(".open_modal").click(function (e) {
-                                var m = $(this).attr("id");                                
-                                $.ajax({
-                                    url: "modTesteeEdit.php",
-                                    type: "GET",
-                                    data: {modal_id: m },
-                                    success: function (ajaxData) {
-                                        $("#ModalEdit").html(ajaxData);
-                                        $("#ModalEdit").modal('show', {backdrop: 'true'});
-                                    }
+                            $(document).ready(function () {
+                                $(".open_modal").click(function (e) {
+                                    var m = $(this).attr("id");
+                                    $.ajax({
+                                        url: "modTesteeEdit.php",
+                                        type: "GET",
+                                        data: {modal_id: m},
+                                        success: function (ajaxData) {
+                                            $("#ModalEdit").html(ajaxData);
+                                            $("#ModalEdit").modal('show', {backdrop: 'true'});
+                                        }
+                                    });
                                 });
                             });
-                        });
-</script>
+//Javascript untuk popup modal Delete
 
-<!-- Javascript untuk popup modal Delete--> 
-<script type="text/javascript">
-    function confirm_modal(delete_url)
-    {
-        $('#modal_delete').modal('show', {backdrop: 'static'});
-        document.getElementById('delete_link').setAttribute('href', delete_url);
-    }
+                            
+                            function confirm_modal(delete_url)
+                            {
+                                $('#modal_delete').modal('show', {backdrop: 'static'});
+                                document.getElementById('delete_link').setAttribute('href', delete_url);
+                            }
 </script>

@@ -9,7 +9,7 @@
         <!-- PAGE CONTENT BEGINS -->
 
         <p><a class="btn btn-success" data-target="#ModalAdd" data-toggle="modal">Add Data</a></p>      
-        <table id="mytable" class="table table-bordered">
+        <table id="example" class="table table-striped table-bordered">
             <thead>
             <th>No.</th>
             <th>Subtest</th>
@@ -19,7 +19,7 @@
             <?php
             //menampilkan data mysqli
             $no = 0;
-            $qSubtest = mysql_query("SELECT su.nama subname, sk.nama skama FROM subtest su inner join skala sk on su.id_skala = sk.id");
+            $qSubtest = mysql_query("SELECT su.id, su.nama subname, sk.nama skama FROM subtest su inner join skala sk on su.id_skala = sk.id");
             while ($dataSkala = mysql_fetch_array($qSubtest)) {
             $no++;
             ?>

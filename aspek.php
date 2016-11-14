@@ -9,7 +9,7 @@
         <!-- PAGE CONTENT BEGINS -->
 
         <p><a class="btn btn-success" data-target="#ModalAdd" data-toggle="modal">Add Data</a></p>      
-        <table id="mytable" class="table table-bordered">
+        <table id="example" class="table table-striped table-bordered">
             <thead>
             <th>No.</th>
             <th>Kategori</th>
@@ -21,14 +21,19 @@
             <?php
             //menampilkan data mysqli
             $no = 0;
-            $qSubtest = mysql_query("SELECT su.nama subname, sk.nama skama FROM aspek su inner join skala sk on su.id_skala = sk.id");
+            $qSubtest = mysql_query("SELECT
+                        su.nama_aspek AS subname,
+                        ka.nama as namekat
+                        FROM
+                        aspek AS su
+                        INNER JOIN kategori ka on su.id_kategori = ka.id");
             while ($dataSkala = mysql_fetch_array($qSubtest)) {
             $no++;
             ?>
             <tr>
                 <td><?php echo $no; ?></td>
                 <td><?php echo $dataSkala['subname']; ?></td>
-                <td><?php echo $dataSkala['skama']; ?></td>
+                <td><?php echo $dataSkala['namekat']; ?></td>
                 <td>
                     <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataSkala['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
                     <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('skalaDel.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
@@ -48,12 +53,12 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="act/subtestAdd.php" name="modal_popup" enctype="multipart/form-data" method="POST">
+                        <form action="act/aspekAdd.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Skala</label>
-                                <?php $qSkala = mysql_query("SELECT * FROM skala"); ?>
-                                <select class="form-control" name="skala" id="form-field-select-1">
+                                <label for="Modal Name">Kategori</label>
+                                <?php $qSkala = mysql_query("SELECT * FROM kategori"); ?>
+                                <select class="form-control" name="kategori" id="form-field-select-1">
                                     <?php while ($dSkla = mysql_fetch_array($qSkala)) { ?>
                                     <option value="<?php echo $dSkla['id'] ?>"><?php echo $dSkla['nama'] ?></option>
                                     <?php } ?>
@@ -61,8 +66,18 @@
                             </div>
 
                             <div class="form-group" style="padding-bottom: 20px;">
-                                <label for="Modal Name">Nama Subtest</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama Subtest" required/>
+                                <label for="Modal Name">Nama Aspek</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama Aspek" required/>
+                            </div>
+                            
+                            <div class="form-group" style="padding-bottom: 20px;">
+                                <label for="Modal Name">Deskripsi High</label>
+                                <input type="text" name="deskripsi_high" class="form-control" placeholder="Deskripsi High" required/>
+                            </div>
+                            
+                            <div class="form-group" style="padding-bottom: 20px;">
+                                <label for="Modal Name">Deskripsi Low</label>
+                                <input type="text" name="deskripsi_low" class="form-control" placeholder="Deskripsi Low" required/>
                             </div>
 
                             <div class="modal-footer">
@@ -114,7 +129,7 @@
                             $(".open_modal").click(function (e) {
                                 var m = $(this).attr("id");
                                 $.ajax({
-                                    url: "modSubtestEdit.php",
+                                    url: "modAspekEdit.php",
                                     type: "GET",
                                     data: {modal_id: m},
                                     success: function (ajaxData) {

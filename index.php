@@ -26,6 +26,10 @@ if (empty($get['uName'])) {
         <link rel="stylesheet" href="assets/css/datepicker.min.css" />
         <link rel="stylesheet" href="assets/css/ui.jqgrid.min.css" />
 
+        <!--datatables-->
+        <link rel="stylesheet" href="assets/css/dataTables.bootstrap.css"/>
+
+
         <!-- text fonts -->
         <link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
 
@@ -383,7 +387,8 @@ if (empty($get['uName'])) {
         <div class="main-container" id="main-container">
             <script type="text/javascript">
                 try {
-                    ace.settings.check('main-container', 'fixed')} catch (e) {
+                    ace.settings.check('main-container', 'fixed')
+                } catch (e) {
                 }
             </script>
 
@@ -431,7 +436,7 @@ if (empty($get['uName'])) {
                         $act0 = "active";
                     } else if ($act == 'lapsiko') {
                         $act11 = "active";
-                    }else if ($act == 'kategori') {
+                    } else if ($act == 'kategori') {
                         $act12 = "active";
                     }
                 }
@@ -594,7 +599,7 @@ if (empty($get['uName'])) {
                                 include "lahasil.php";
                             } elseif ($p == "lapsiko") {
                                 include "lapsiko.php";
-                            }elseif ($p == "kategori") {
+                            } elseif ($p == "kategori") {
                                 include "kategori.php";
                             }
                         } else {
@@ -628,12 +633,12 @@ if (empty($get['uName'])) {
         <!-- <![endif]-->
 
         <!--[if IE]>-->
-<script src="assets/js/jquery.1.11.1.min.js"></script>
-<!--<![endif]-->
+        <script src="assets/js/jquery.1.11.1.min.js"></script>
+        <!--<![endif]-->
 
         <!--[if !IE]> -->
         <script type="text/javascript">
-                            window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
+                    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
         </script>
 
         <!-- <![endif]-->
@@ -650,7 +655,7 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
         <script src="assets/js/bootstrap.min.js"></script>
 
         <!-- page specific plugin scripts -->
-        
+
         <script src="assets/js/jquery-ui.custom.min.js"></script>
         <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
         <script src="assets/js/jquery.easypiechart.min.js"></script>
@@ -659,6 +664,10 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
         <script src="assets/js/jquery.flot.pie.min.js"></script>
         <script src="assets/js/jquery.flot.resize.min.js"></script>-->
 
+        <!--datatables-->
+        <script src="assets/js/jquery.dataTables.min.js"></script>
+        <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+        <!--<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>-->
         <!-- ace scripts -->
         <script src="assets/js/ace-elements.min.js"></script>
         <script src="assets/js/ace.min.js"></script>
@@ -876,6 +885,9 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
                     else
                         $(this).removeClass('dropup');
                 });
+            });
+            $(document).ready(function () {
+                $('#example').DataTable();
             });
         </script>
     </body>

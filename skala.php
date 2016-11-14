@@ -9,7 +9,7 @@
         <!-- PAGE CONTENT BEGINS -->
 
         <p><a class="btn btn-success" data-target="#ModalAdd" data-toggle="modal">Add Data</a></p>      
-        <table id="mytable" class="table table-bordered">
+        <table id="example" class="table table-striped table-bordered">
             <thead>
             <th>No.</th>
             <th>Skala</th>
