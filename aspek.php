@@ -14,8 +14,8 @@
             <th>No.</th>
             <th>Kategori</th>
             <th>Aspek</th>
-            <th>Deskripsi High</th>
-            <th>Deskripsi Low</th>
+<!--            <th>Deskripsi High</th>
+            <th>Deskripsi Low</th>-->
             <th>Action</th>
             </thead>
             <?php
@@ -32,8 +32,8 @@
             ?>
             <tr>
                 <td><?php echo $no; ?></td>
-                <td><?php echo $dataSkala['subname']; ?></td>
                 <td><?php echo $dataSkala['namekat']; ?></td>
+                <td><?php echo $dataSkala['subname']; ?></td>
                 <td>
                     <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataSkala['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
                     <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('skalaDel.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
@@ -72,12 +72,12 @@
                             
                             <div class="form-group" style="padding-bottom: 20px;">
                                 <label for="Modal Name">Deskripsi High</label>
-                                <input type="text" name="deskripsi_high" class="form-control" placeholder="Deskripsi High" required/>
+                                <textarea name="deskripsi_high" class="form-control" placeholder="Deskripsi High" required></textarea>
                             </div>
                             
                             <div class="form-group" style="padding-bottom: 20px;">
                                 <label for="Modal Name">Deskripsi Low</label>
-                                <input type="text" name="deskripsi_low" class="form-control" placeholder="Deskripsi Low" required/>
+                                <textarea name="deskripsi_low" class="form-control" placeholder="Deskripsi Low" required></textarea>
                             </div>
 
                             <div class="modal-footer">
