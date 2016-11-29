@@ -887,7 +887,10 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
                 });
             });
             $(document).ready(function () {
-                $('#example').DataTable();
+                $('#example').DataTable({
+                    "scrollY": 200,
+                    "scrollX": true
+                });
             });
         </script>
     </body>
