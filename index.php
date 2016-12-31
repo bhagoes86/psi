@@ -439,6 +439,13 @@ if (empty($get['uName'])) {
                     } else if ($act == 'kategori') {
                         $act12 = "active";
                     }
+
+                    if ($act == 'testee' || $act == 'subtest' || $act == 'skala' 
+                            || $act == 'aspek' || $act == 'standart' || $act == 'perhitungan' 
+                            || $act == 'psikogram' || $act == 'subtestee' || $act == 'lahasil' 
+                            || $act == 'lapsiko' || $act == 'kategori') {
+                        $actives = 'active open';
+                    }
                 }
                 ?>
                 <ul class="nav nav-list">
@@ -449,7 +456,7 @@ if (empty($get['uName'])) {
                         </a>
                         <b class="arrow"></b>
                     </li>
-                    <li class="">
+                    <li class="<?php echo $actives; ?>">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">
@@ -502,7 +509,7 @@ if (empty($get['uName'])) {
                             </li>
                         </ul>
                     </li>
-                    <li class="">
+                    <li class="<?php echo $actives; ?>">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> Proses </span>
@@ -533,7 +540,7 @@ if (empty($get['uName'])) {
                             </li>
                         </ul>
                     </li>
-                    <li class="">
+                    <li class="<?php echo $actives; ?>">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-pencil-square-o"></i>
                             <span class="menu-text"> Laporan </span>

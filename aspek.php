@@ -28,17 +28,17 @@
                         aspek AS su
                         INNER JOIN kategori ka on su.id_kategori = ka.id");
             while ($dataSkala = mysql_fetch_array($qSubtest)) {
-            $no++;
-            ?>
-            <tr>
-                <td><?php echo $no; ?></td>
-                <td><?php echo $dataSkala['namekat']; ?></td>
-                <td><?php echo $dataSkala['subname']; ?></td>
-                <td>
-                    <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataSkala['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
-                    <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('skalaDel.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
-                </td>
-            </tr>
+                $no++;
+                ?>
+                <tr>
+                    <td><?php echo $no; ?></td>
+                    <td><?php echo $dataSkala['namekat']; ?></td>
+                    <td><?php echo $dataSkala['subname']; ?></td>
+                    <td>
+                        <a href="#" class='btn btn-xs btn-info open_modal' id='<?php echo $dataSkala['id']; ?>'><i class="ace-icon fa fa-pencil bigger-120"></i></a> 
+                        <a href="#" class='btn btn-xs btn-danger'onclick="confirm_modal('skalaDel.php?&skala_id=<?php echo $dataSkala['id']; ?>');"><i class="ace-icon fa fa-trash bigger-120"></i></a>
+                    </td>
+                </tr>
             <?php } ?>
         </table>
 
@@ -60,7 +60,7 @@
                                 <?php $qSkala = mysql_query("SELECT * FROM kategori"); ?>
                                 <select class="form-control" name="kategori" id="form-field-select-1">
                                     <?php while ($dSkla = mysql_fetch_array($qSkala)) { ?>
-                                    <option value="<?php echo $dSkla['id'] ?>"><?php echo $dSkla['nama'] ?></option>
+                                        <option value="<?php echo $dSkla['id'] ?>"><?php echo $dSkla['nama'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -69,12 +69,12 @@
                                 <label for="Modal Name">Nama Aspek</label>
                                 <input type="text" name="nama" class="form-control" placeholder="Nama Aspek" required/>
                             </div>
-                            
+
                             <div class="form-group" style="padding-bottom: 20px;">
                                 <label for="Modal Name">Deskripsi High</label>
                                 <textarea name="deskripsi_high" class="form-control" placeholder="Deskripsi High" required></textarea>
                             </div>
-                            
+
                             <div class="form-group" style="padding-bottom: 20px;">
                                 <label for="Modal Name">Deskripsi Low</label>
                                 <textarea name="deskripsi_low" class="form-control" placeholder="Deskripsi Low" required></textarea>
